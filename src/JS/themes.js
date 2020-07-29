@@ -8,8 +8,6 @@ const refs = {
   body: document.querySelector('body'),
 };
 
-refs.body.classList.add(Theme.LIGHT);
-
 refs.inputCheckbox.addEventListener('change', handleInputCheckbox);
 document.addEventListener('DOMContentLoaded', handleSavedThemes);
 
@@ -28,5 +26,8 @@ function handleSavedThemes() {
   if (savedTheme === 'dark-theme') {
     refs.inputCheckbox.checked = true;
   }
-  refs.body.classList.replace(Theme.LIGHT, savedTheme);
+  refs.body.classList.add(savedTheme);
+  if (savedTheme === null) {
+    refs.body.classList.replace(savedTheme, Theme.LIGHT);
+  }
 }
